@@ -136,10 +136,14 @@ public class ParallaxManager : MonoBehaviour
                 x += Random.Range(currentParallaxDeco.m_minDistanceInBetween.x, currentParallaxDeco.m_maxDistanceInBetween.x)
                 )
             {
-                GameObject decoObj = new GameObject(string.Format("decoObj[{0},{1}]", x, y));
+
+                //Recalculate Y as we don't want to have "rows"
+                float newY = Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y) - currentParallaxDeco.m_maxDistanceInBetween.y/2;
+
+                GameObject decoObj = new GameObject(string.Format("decoObj[{0},{1}]", x, newY + y));
                 decoObj.transform.parent = a_parent;
                 //decoObj.transform.position = Vector3.zero;
-                decoObj.transform.localPosition = new Vector3(x, y);
+                decoObj.transform.localPosition = new Vector3(x, newY + y);
                 decoObj.transform.localScale = Vector3.one * currentParallaxDeco.m_scaleAdjust;
                 a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)].Add(decoObj);
 
