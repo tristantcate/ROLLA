@@ -68,7 +68,11 @@ public class ParallaxManager : MonoBehaviour
             //Setup list of decorations
             parallaxLayer.m_decoPrefabInstances = new List<GameObject>[parallaxObjAmount];
             for (int i = 0; i < parallaxLayer.m_decoPrefabInstances.Length; i++)
+            {
                 parallaxLayer.m_decoPrefabInstances[i] = new List<GameObject>();
+                AddDecorations(parallaxLayer.m_parallaxObjects[i], parallaxLayer);
+
+            }
         }
     }
 
@@ -126,7 +130,6 @@ public class ParallaxManager : MonoBehaviour
             float 
             y = currentParallaxDeco.m_decoAreaMin.y;
             y < currentParallaxDeco.m_decoAreaMax.y;
-            y += Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y)
             ) {
 
             for (
@@ -142,7 +145,6 @@ public class ParallaxManager : MonoBehaviour
 
                 GameObject decoObj = new GameObject(string.Format("decoObj[{0},{1}]", x, newY + y));
                 decoObj.transform.parent = a_parent;
-                //decoObj.transform.position = Vector3.zero;
                 decoObj.transform.localPosition = new Vector3(x, newY + y);
                 decoObj.transform.localScale = Vector3.one * currentParallaxDeco.m_scaleAdjust;
                 a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)].Add(decoObj);
@@ -153,6 +155,8 @@ public class ParallaxManager : MonoBehaviour
                 sr.sortingOrder = a_parallaxLayer.m_spriteRenderLayer * 1000;
                 sr.sortingOrder += Mathf.RoundToInt(-y * 10.0f) + 500;
             }
+
+            y += Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y);
         }
 
     }
