@@ -1045,6 +1045,8 @@ MonoBehaviour:
     m_objectDistance: 8
     m_spriteScaleAdjustment: 1
     m_flipXPerSprite: 1
+    m_decorations:
+    - {fileID: 11400000, guid: 2aa5e231ffb43c349b3cb93b4da2e118, type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
   - m_spriteRenderLayer: 1
@@ -1054,6 +1056,8 @@ MonoBehaviour:
     m_objectDistance: 8
     m_spriteScaleAdjustment: 2
     m_flipXPerSprite: 1
+    m_decorations:
+    - {fileID: 11400000, guid: 2aa5e231ffb43c349b3cb93b4da2e118, type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
   - m_spriteRenderLayer: -2
@@ -1063,6 +1067,8 @@ MonoBehaviour:
     m_objectDistance: 8
     m_spriteScaleAdjustment: 0.3
     m_flipXPerSprite: 1
+    m_decorations:
+    - {fileID: 11400000, guid: 2aa5e231ffb43c349b3cb93b4da2e118, type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
   - m_spriteRenderLayer: -1
@@ -1072,6 +1078,8 @@ MonoBehaviour:
     m_objectDistance: 8
     m_spriteScaleAdjustment: 0.5
     m_flipXPerSprite: 1
+    m_decorations:
+    - {fileID: 11400000, guid: 2aa5e231ffb43c349b3cb93b4da2e118, type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
 --- !u!1 &852529963
