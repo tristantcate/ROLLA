@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3674efba9e112144bb900ed46e5fbaa3, type: 3}
+  m_Name: Trees+Grass
+  m_EditorClassIdentifier: 
+  m_decorations:
+  - m_decorationSpecifiers:
+    - {fileID: 11400000, guid: fab2b78912f473b4a9d4738684a28ff5, type: 2}
+    - {fileID: 11400000, guid: b23d832a61a4f3e44ba2a425d29c5262, type: 2}
+    m_spawnChance: 60
+  - m_decorationSpecifiers:
+    - {fileID: 11400000, guid: fab2b78912f473b4a9d4738684a28ff5, type: 2}
+    m_spawnChance: 25
+  - m_decorationSpecifiers:
+    - {fileID: 11400000, guid: 4ea12fb1d527e6d4f93a752e1d3b8708, type: 2}
+    - {fileID: 11400000, guid: 2aa5e231ffb43c349b3cb93b4da2e118, type: 2}
+    - {fileID: 11400000, guid: e62d2945da2c32147bedcbb01642d208, type: 2}
+    m_spawnChance: 15

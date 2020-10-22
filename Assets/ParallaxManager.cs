@@ -23,7 +23,7 @@ public class ParallaxManager : MonoBehaviour
         public bool m_flipXPerSprite;
 
         [Header("Random Decoration")]
-        public DecorationSpecifier[] m_decorations;
+        public DecorationCollection m_decorationCollection;
 
         [HideInInspector] public Transform m_parallaxLayerObject;
         [HideInInspector] public Transform[] m_parallaxObjects;
@@ -31,7 +31,7 @@ public class ParallaxManager : MonoBehaviour
         [HideInInspector] public List<GameObject>[] m_decoPrefabInstances;
     }
 
-   
+
 
     [SerializeField] private ParallaxLayer[] m_parallaxLayers;
 
@@ -95,7 +95,7 @@ public class ParallaxManager : MonoBehaviour
     {
         foreach (ParallaxLayer parallaxLayer in m_parallaxLayers)
         {
-            parallaxLayer.m_parallaxLayerObject.position = cameraToFollow.transform.position * parallaxLayer.m_layerSpeed + Vector3.up * parallaxLayer.m_layerHeight;
+            parallaxLayer.m_parallaxLayerObject.position = (cameraToFollow.transform.position * parallaxLayer.m_layerSpeed) + Vector3.up * parallaxLayer.m_layerHeight;
 
             foreach (Transform parallaxObj in parallaxLayer.m_parallaxObjects)
             {
@@ -116,47 +116,67 @@ public class ParallaxManager : MonoBehaviour
         }
     }
 
-    private void AddDecorations(Transform a_parent, ParallaxLayer a_parallaxLayer)
+    private DecorationAssembly GetRandomDecoCollection(ParallaxLayer a_layer)
     {
-        foreach (GameObject currentDecoInstances in a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)])
+        int searchRand = Random.Range(0, 101);
+        int currentRand = 0;
+        foreach (DecorationAssembly decoAssembly in a_layer.m_decorationCollection.m_decorations)
         {
-            Destroy(currentDecoInstances);
+            currentRand += decoAssembly.m_spawnChance;
+            if (currentRand >= searchRand) return decoAssembly; 
         }
 
+        Debug.LogError("NO RANDOMDECO COLLECTION FOUND. ARE THE PROCENTAGES FILLED IN CORRECTLY?");
+        return null;
+    }
+
+    private void AddDecorations(Transform a_parent, ParallaxLayer a_parallaxLayer)
+    {
+
+        //Destroy current (off screen) parallax decorations
+        foreach (GameObject currentDecoInstances in a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)])
+            Destroy(currentDecoInstances);
         a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)].Clear();
 
-        DecorationSpecifier currentParallaxDeco = a_parallaxLayer.m_decorations[0];
-        for (
-            float 
-            y = currentParallaxDeco.m_decoAreaMin.y;
-            y < currentParallaxDeco.m_decoAreaMax.y;
-            ) {
+        DecorationAssembly randomDecoCollection = GetRandomDecoCollection(a_parallaxLayer);
+        foreach (DecorationSpecifier currentParallaxDeco in randomDecoCollection.m_decorationSpecifiers)
+        {
 
             for (
                 float
-                x = currentParallaxDeco.m_decoAreaMin.x;
-                x < currentParallaxDeco.m_decoAreaMax.x;
-                x += Random.Range(currentParallaxDeco.m_minDistanceInBetween.x, currentParallaxDeco.m_maxDistanceInBetween.x)
+                y = currentParallaxDeco.m_decoAreaMin.y;
+                y < currentParallaxDeco.m_decoAreaMax.y;
                 )
             {
 
-                //Recalculate Y as we don't want to have "rows"
-                float newY = Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y) - currentParallaxDeco.m_maxDistanceInBetween.y/2;
+                for (
+                    float
+                    x = currentParallaxDeco.m_decoAreaMin.x;
+                    x < currentParallaxDeco.m_decoAreaMax.x;
+                    x += Random.Range(currentParallaxDeco.m_minDistanceInBetween.x, currentParallaxDeco.m_maxDistanceInBetween.x) * currentParallaxDeco.m_scaleAdjust
+                    )
+                {
 
-                GameObject decoObj = new GameObject(string.Format("decoObj[{0},{1}]", x, newY + y));
-                decoObj.transform.parent = a_parent;
-                decoObj.transform.localPosition = new Vector3(x, newY + y);
-                decoObj.transform.localScale = Vector3.one * currentParallaxDeco.m_scaleAdjust;
-                a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)].Add(decoObj);
+                    //Recalculate Y as we don't want to have "rows"
+                    float newY = Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y) - currentParallaxDeco.m_maxDistanceInBetween.y / 2;
+                    newY *= currentParallaxDeco.m_scaleAdjust;
 
-                SpriteRenderer sr = decoObj.AddComponent<SpriteRenderer>();
-                sr.sprite = currentParallaxDeco.m_randomSprites[Random.Range(0, currentParallaxDeco.m_randomSprites.Length)];
-                sr.sortingLayerName = "Parallax";
-                sr.sortingOrder = a_parallaxLayer.m_spriteRenderLayer * 1000;
-                sr.sortingOrder += Mathf.RoundToInt(-y * 10.0f) + 500;
+                    GameObject decoObj = new GameObject(string.Format("decoObj[{0},{1}]", x, newY + y));
+                    decoObj.transform.parent = a_parent;
+                    decoObj.transform.localPosition = new Vector3(x, newY + y);
+                    decoObj.transform.localScale = Vector3.one * currentParallaxDeco.m_scaleAdjust;
+                    a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)].Add(decoObj);
+
+                    SpriteRenderer sr = decoObj.AddComponent<SpriteRenderer>();
+                    sr.sprite = currentParallaxDeco.m_randomSprites[Random.Range(0, currentParallaxDeco.m_randomSprites.Length)];
+                    sr.sortingLayerName = "Parallax";
+                    sr.sortingOrder = a_parallaxLayer.m_spriteRenderLayer * 1000;
+                    sr.sortingOrder += Mathf.RoundToInt(-decoObj.transform.localPosition.y * 10.0f) + 500 + currentParallaxDeco.m_layerOrderOffset * 10;
+                }
+
+                y += Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y) * currentParallaxDeco.m_scaleAdjust;
             }
 
-            y += Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y);
         }
 
     }
