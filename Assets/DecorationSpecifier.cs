@@ -6,6 +6,8 @@ using UnityEngine;
 public class DecorationSpecifier : ScriptableObject
 {
     public Sprite[] m_randomSprites;
+    public Color m_lerpColor1 = Color.white;
+    public Color m_lerpColor2 = Color.white;
 
     [Space(10)]
     public float m_scaleAdjust;

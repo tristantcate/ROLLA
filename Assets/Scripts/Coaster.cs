@@ -20,6 +20,10 @@ public class Coaster : MonoBehaviour
     private Queue<GameObject> buildQueue = new Queue<GameObject>();
 
     private bool coasterGameOver = false;
+    private float m_currentTrackHeight = 0.0f;
+    [Space(8)]
+    [SerializeField] private float m_minHeight = 0.0f;
+
 
     public Track GetTrackByID(int a_ID) => m_trackPieces[a_ID];
     public Track GetNextTrack(Track a_currentTrack)
@@ -111,17 +115,26 @@ public class Coaster : MonoBehaviour
         GameObject trackPieceToBuild = a_trackToBuild;
         if (a_trackToBuild == null)
         {
-            trackPieceToBuild = trackPrefabs[Random.Range(0, trackPrefabs.Length)];
+            int randomID = Random.Range(0, trackPrefabs.Length);
+            trackPieceToBuild = trackPrefabs[randomID];
+            if(m_currentTrackHeight < m_minHeight && randomID == 2)
+            {
+                Debug.Log("MIN HEIGHT REACHED");
+                trackPieceToBuild = trackPrefabs[0];
+            }
         }
 
         GameObject trackPieceInstance = Instantiate(trackPieceToBuild, transform);
         Vector3 placementPos = prevLastTrackPartPos - trackPieceInstance.GetComponent<Track>().GetTrackMovePartByID(0).transform.position;
         trackPieceInstance.transform.position = placementPos;
 
+        m_currentTrackHeight = placementPos.y;
+
         m_trackPieces.Add(trackPieceInstance.GetComponent<Track>());
 
         TrackMovePoint lastPartInTrack = trackPieceInstance.GetComponent<Track>().GetLastTrackMovePoint();
         prevLastTrackPartPos = lastPartInTrack.transform.position;
+
 
     }
 

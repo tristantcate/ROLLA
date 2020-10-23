@@ -155,7 +155,7 @@ MonoBehaviour:
     type: 3}
   m_cartAmount: 8
   m_cartDistance: 1.2
-  m_followDelay: 50
+  m_followDelay: 20
   c_coaster: {fileID: 109719719}
   c_gameOverSystem: {fileID: 1161622789}
   c_scoreSystem: {fileID: 249490274}
@@ -241,6 +241,7 @@ MonoBehaviour:
   - {fileID: 6128051624695826470, guid: 07fc8f5ff3078de4a8a9d12220e1f2b4, type: 3}
   - {fileID: 8890085214272752748, guid: a665b2f0c098cee4cb5cbc92e60d0b04, type: 3}
   - {fileID: 6128051624695826470, guid: 380b8fda58ecaeb449685ed26a422fb0, type: 3}
+  m_minHeight: -2
   c_guesser: {fileID: 1026468480}
 --- !u!1 &116357249
 GameObject:
@@ -401,7 +402,7 @@ Transform:
   m_Children:
   - {fileID: 344245786}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250222247
 GameObject:
@@ -609,7 +610,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 602092672}
   m_Father: {fileID: 725379397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -852,12 +854,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602092670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 477406955}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695511804
 GameObject:
@@ -890,7 +892,7 @@ Transform:
   - {fileID: 1953453328}
   - {fileID: 1978113825}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711912765
 GameObject:
@@ -1021,7 +1023,7 @@ Transform:
   m_Children:
   - {fileID: 477406955}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &725379398
 MonoBehaviour:
@@ -1079,6 +1081,28 @@ MonoBehaviour:
     m_spriteScaleAdjustment: 0.5
     m_flipXPerSprite: 1
     m_decorationCollection: {fileID: 11400000, guid: ec9b6c4871e14a74184ae1eca0a2139a,
+      type: 2}
+    m_parallaxLayerObject: {fileID: 0}
+    m_parallaxObjects: []
+  - m_spriteRenderLayer: -4
+    m_layerSpeed: 0.5
+    m_layerHeight: -10
+    m_sprite: {fileID: 0}
+    m_objectDistance: 8
+    m_spriteScaleAdjustment: 10
+    m_flipXPerSprite: 1
+    m_decorationCollection: {fileID: 11400000, guid: 9c26b3e4cd19b3a43bf4c6515de73a77,
+      type: 2}
+    m_parallaxLayerObject: {fileID: 0}
+    m_parallaxObjects: []
+  - m_spriteRenderLayer: -5
+    m_layerSpeed: 0.8
+    m_layerHeight: -2
+    m_sprite: {fileID: 0}
+    m_objectDistance: 8
+    m_spriteScaleAdjustment: 4
+    m_flipXPerSprite: 1
+    m_decorationCollection: {fileID: 11400000, guid: 9c26b3e4cd19b3a43bf4c6515de73a77,
       type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
@@ -2027,7 +2051,7 @@ Transform:
   m_Children:
   - {fileID: 711912766}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1161622788
 Animator:

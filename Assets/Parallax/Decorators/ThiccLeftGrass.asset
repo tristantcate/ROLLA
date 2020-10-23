@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThiccLeftGrass
   m_EditorClassIdentifier: 
   m_randomSprites:
-  - {fileID: 21300000, guid: ee03cfba89134ce4ba320d49bed91e38, type: 3}
+  - {fileID: 21300000, guid: 12a933f6cc689974392b4d92dfc64b0e, type: 3}
   m_scaleAdjust: 0.3
   m_thickness: 0
   m_layerOrderOffset: -5

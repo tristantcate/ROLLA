@@ -172,6 +172,11 @@ public class ParallaxManager : MonoBehaviour
                     sr.sortingLayerName = "Parallax";
                     sr.sortingOrder = a_parallaxLayer.m_spriteRenderLayer * 1000;
                     sr.sortingOrder += Mathf.RoundToInt(-decoObj.transform.localPosition.y * 10.0f) + 500 + currentParallaxDeco.m_layerOrderOffset * 10;
+
+                    if(currentParallaxDeco.m_lerpColor1.a != 0 && currentParallaxDeco.m_lerpColor2.a != 0)
+                    {
+                        sr.color = Color.Lerp(currentParallaxDeco.m_lerpColor1, currentParallaxDeco.m_lerpColor2, Random.Range(0.0f, 1.0f));
+                    }
                 }
 
                 y += Random.Range(currentParallaxDeco.m_minDistanceInBetween.y, currentParallaxDeco.m_maxDistanceInBetween.y) * currentParallaxDeco.m_scaleAdjust;
