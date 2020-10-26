@@ -17,10 +17,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8a33aeea7d6d876408a042e129665d84, type: 3}
   - {fileID: 21300000, guid: 6481c23e68d473d4e9ea6b4eb13a3189, type: 3}
   - {fileID: 21300000, guid: 0670b920c55fe124f95373c8933d4a30, type: 3}
+  m_lerpColor1: {r: 1, g: 1, b: 1, a: 1}
+  m_lerpColor2: {r: 1, g: 1, b: 1, a: 1}
   m_scaleAdjust: 1
   m_thickness: 0
   m_layerOrderOffset: 0
   m_minDistanceInBetween: {x: 1, y: 0.75}
   m_maxDistanceInBetween: {x: 2.5, y: 2}
   m_decoAreaMin: {x: -3.5, y: -1}
-  m_decoAreaMax: {x: 3.5, y: 2}
+  m_decoAreaMax: {x: 3.5, y: 1.75}

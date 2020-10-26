@@ -17,7 +17,7 @@ public class ParallaxManager : MonoBehaviour
         public float m_layerHeight;
 
         [Header("Sprite Settings")]
-        public Sprite m_sprite;
+        public Sprite[] m_sprites;
         public float m_objectDistance;
         public float m_spriteScaleAdjustment;
         public bool m_flipXPerSprite;
@@ -57,12 +57,16 @@ public class ParallaxManager : MonoBehaviour
 
                 parallaxLayer.m_parallaxObjects[parallaxObjIter] = parallaxObj.transform;
 
-                SpriteRenderer sr = parallaxObj.AddComponent<SpriteRenderer>();
-                sr.sprite = parallaxLayer.m_sprite;
-                sr.sortingOrder = parallaxLayer.m_spriteRenderLayer * 1000;
-                sr.sortingLayerName = "Parallax";
+                if(parallaxLayer.m_sprites.Length > 0)
+                {
+                    SpriteRenderer sr = parallaxObj.AddComponent<SpriteRenderer>();
+                    sr.sprite = parallaxLayer.m_sprites[Random.Range(0, parallaxLayer.m_sprites.Length)];
+                    sr.sortingOrder = parallaxLayer.m_spriteRenderLayer * 1000;
+                    sr.sortingLayerName = "Parallax";
+                    if (parallaxLayer.m_flipXPerSprite && parallaxObjIter % 2 == 1) sr.flipX = true;
 
-                if (parallaxLayer.m_flipXPerSprite && parallaxObjIter % 2 == 1) sr.flipX = true;
+                }
+
             }
 
             //Setup list of decorations
@@ -106,8 +110,13 @@ public class ParallaxManager : MonoBehaviour
 
                     if(parallaxLayer.m_flipXPerSprite && parallaxLayer.m_parallaxObjects.Length % 2 == 1)
                     {
-                        SpriteRenderer parallaxObjSR = parallaxObj.GetComponent<SpriteRenderer>();
-                        parallaxObjSR.flipX = !parallaxObjSR.flipX;
+                        if (parallaxLayer.m_sprites.Length > 0)
+                        {
+                            SpriteRenderer parallaxObjSR = parallaxObj.GetComponent<SpriteRenderer>();
+                            if(parallaxLayer.m_flipXPerSprite) parallaxObjSR.flipX = !parallaxObjSR.flipX;
+                            parallaxObjSR.sprite = parallaxLayer.m_sprites[Random.Range(0, parallaxLayer.m_sprites.Length)];
+
+                        }
                     }
 
                     AddDecorations(parallaxObj, parallaxLayer);
@@ -118,6 +127,7 @@ public class ParallaxManager : MonoBehaviour
 
     private DecorationAssembly GetRandomDecoCollection(ParallaxLayer a_layer)
     {
+        if (a_layer.m_decorationCollection == null) return null;
         int searchRand = Random.Range(0, 101);
         int currentRand = 0;
         foreach (DecorationAssembly decoAssembly in a_layer.m_decorationCollection.m_decorations)
@@ -132,7 +142,7 @@ public class ParallaxManager : MonoBehaviour
 
     private void AddDecorations(Transform a_parent, ParallaxLayer a_parallaxLayer)
     {
-
+        if (a_parallaxLayer.m_decorationCollection == null) return;
         //Destroy current (off screen) parallax decorations
         foreach (GameObject currentDecoInstances in a_parallaxLayer.m_decoPrefabInstances[GetParallaxObjectID(a_parent, a_parallaxLayer)])
             Destroy(currentDecoInstances);

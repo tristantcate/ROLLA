@@ -1043,10 +1043,14 @@ MonoBehaviour:
   - m_spriteRenderLayer: 0
     m_layerSpeed: 0.5
     m_layerHeight: 3
-    m_sprite: {fileID: 21300000, guid: 879b0b7f01c04f64d9f8fd144fcca445, type: 3}
+    m_sprites:
+    - {fileID: -6311352213680616822, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: 1596449977676324358, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -1760785430960643966, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -6418752210350679977, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
     m_objectDistance: 8
     m_spriteScaleAdjustment: 1
-    m_flipXPerSprite: 1
+    m_flipXPerSprite: 0
     m_decorationCollection: {fileID: 11400000, guid: ec9b6c4871e14a74184ae1eca0a2139a,
       type: 2}
     m_parallaxLayerObject: {fileID: 0}
@@ -1054,10 +1058,14 @@ MonoBehaviour:
   - m_spriteRenderLayer: 1
     m_layerSpeed: 0.1
     m_layerHeight: 0
-    m_sprite: {fileID: 21300000, guid: 879b0b7f01c04f64d9f8fd144fcca445, type: 3}
+    m_sprites:
+    - {fileID: -6311352213680616822, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: 1596449977676324358, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -1760785430960643966, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -6418752210350679977, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
     m_objectDistance: 8
     m_spriteScaleAdjustment: 2
-    m_flipXPerSprite: 1
+    m_flipXPerSprite: 0
     m_decorationCollection: {fileID: 11400000, guid: ec9b6c4871e14a74184ae1eca0a2139a,
       type: 2}
     m_parallaxLayerObject: {fileID: 0}
@@ -1065,10 +1073,14 @@ MonoBehaviour:
   - m_spriteRenderLayer: -2
     m_layerSpeed: 0.85
     m_layerHeight: 5.5
-    m_sprite: {fileID: 21300000, guid: 879b0b7f01c04f64d9f8fd144fcca445, type: 3}
+    m_sprites:
+    - {fileID: -6311352213680616822, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: 1596449977676324358, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -1760785430960643966, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -6418752210350679977, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
     m_objectDistance: 8
     m_spriteScaleAdjustment: 0.3
-    m_flipXPerSprite: 1
+    m_flipXPerSprite: 0
     m_decorationCollection: {fileID: 11400000, guid: ec9b6c4871e14a74184ae1eca0a2139a,
       type: 2}
     m_parallaxLayerObject: {fileID: 0}
@@ -1076,18 +1088,22 @@ MonoBehaviour:
   - m_spriteRenderLayer: -1
     m_layerSpeed: 0.7
     m_layerHeight: 5
-    m_sprite: {fileID: 21300000, guid: 879b0b7f01c04f64d9f8fd144fcca445, type: 3}
+    m_sprites:
+    - {fileID: -6311352213680616822, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: 1596449977676324358, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -1760785430960643966, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
+    - {fileID: -6418752210350679977, guid: a99ab930b78ccab4fb7ae4d3789585c7, type: 3}
     m_objectDistance: 8
     m_spriteScaleAdjustment: 0.5
-    m_flipXPerSprite: 1
+    m_flipXPerSprite: 0
     m_decorationCollection: {fileID: 11400000, guid: ec9b6c4871e14a74184ae1eca0a2139a,
       type: 2}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
-  - m_spriteRenderLayer: -4
+  - m_spriteRenderLayer: -25
     m_layerSpeed: 0.5
     m_layerHeight: -10
-    m_sprite: {fileID: 0}
+    m_sprites: []
     m_objectDistance: 8
     m_spriteScaleAdjustment: 10
     m_flipXPerSprite: 1
@@ -1098,12 +1114,23 @@ MonoBehaviour:
   - m_spriteRenderLayer: -5
     m_layerSpeed: 0.8
     m_layerHeight: -2
-    m_sprite: {fileID: 0}
+    m_sprites: []
     m_objectDistance: 8
     m_spriteScaleAdjustment: 4
     m_flipXPerSprite: 1
     m_decorationCollection: {fileID: 11400000, guid: 9c26b3e4cd19b3a43bf4c6515de73a77,
       type: 2}
+    m_parallaxLayerObject: {fileID: 0}
+    m_parallaxObjects: []
+  - m_spriteRenderLayer: -20
+    m_layerSpeed: 0.8
+    m_layerHeight: -4
+    m_sprites:
+    - {fileID: 21300000, guid: f9190da4958ee334bb30b4f47be372f7, type: 3}
+    m_objectDistance: 2
+    m_spriteScaleAdjustment: 5
+    m_flipXPerSprite: 1
+    m_decorationCollection: {fileID: 0}
     m_parallaxLayerObject: {fileID: 0}
     m_parallaxObjects: []
 --- !u!1 &852529963

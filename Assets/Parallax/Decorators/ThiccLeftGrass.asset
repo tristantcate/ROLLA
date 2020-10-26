@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_randomSprites:
   - {fileID: 21300000, guid: 12a933f6cc689974392b4d92dfc64b0e, type: 3}
+  m_lerpColor1: {r: 1, g: 1, b: 1, a: 1}
+  m_lerpColor2: {r: 1, g: 1, b: 1, a: 1}
   m_scaleAdjust: 0.3
   m_thickness: 0
   m_layerOrderOffset: -5
   m_minDistanceInBetween: {x: 1, y: 0.75}
   m_maxDistanceInBetween: {x: 2.5, y: 2}
-  m_decoAreaMin: {x: -4, y: -1}
-  m_decoAreaMax: {x: 0, y: 1.5}
+  m_decoAreaMin: {x: -4, y: -0.75}
+  m_decoAreaMax: {x: 0, y: 1.25}
